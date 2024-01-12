@@ -215,7 +215,9 @@ public class javaAssignmentProgram {
     private static void clearCSV(ArrayList<String[]> data)
     {
         data.clear();//clears the csv for if the user says no to saving the data in a csv
+        System.out.println("temporay data deleted");
     }
+
     private static void writeCSV(String filePath, ArrayList<String[]> data) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             // Iterate through the ArrayList and write each line to the CSV file
@@ -238,6 +240,8 @@ public class javaAssignmentProgram {
             case "Y":
                 writeCSV(filename, CSVdata);
                 System.out.println("'yes' selected, creating .CSV");
+                clearCSV(CSVdata);
+                
                 break;
             case "n":
             case "N":
@@ -395,6 +399,7 @@ public class javaAssignmentProgram {
         Scanner userSelect = new Scanner(System.in);
         int Input = 0;
         outputList(userData);
+        clearCSV(CSVdata);
         String filename = "";
         try {
             
@@ -405,16 +410,16 @@ public class javaAssignmentProgram {
             //waits for user input and then displays data bas
 
         switch (Input) {
-            case 10: allUserInfo(user10); filename = "user10Info.txt"; DecideCSV(filename); break;
-            case 11: allUserInfo(user11); filename = "user11Info.txt"; DecideCSV(filename); break;
-            case 12: allUserInfo(user12); filename = "user12Info.txt"; DecideCSV(filename); break;
-            case 13: allUserInfo(user13); filename = "user13Info.txt"; DecideCSV(filename); break;
-            case 14: allUserInfo(user14); filename = "user14Info.txt"; DecideCSV(filename); break;
-            case 15: allUserInfo(user15); filename = "user15Info.txt"; DecideCSV(filename); break;
-            case 16: allUserInfo(user16); filename = "user16Info.txt"; DecideCSV(filename); break;
-            case 17: allUserInfo(user17); filename = "user17Info.txt"; DecideCSV(filename); break;
-            case 18: allUserInfo(user18); filename = "user18Info.txt"; DecideCSV(filename); break;
-            case 19: allUserInfo(user19); filename = "user19Info.txt"; DecideCSV(filename); break;
+            case 10: allUserInfo(user10); filename = "user10Info.csv"; DecideCSV(filename); break;
+            case 11: allUserInfo(user11); filename = "user11Info.csv"; DecideCSV(filename); break;
+            case 12: allUserInfo(user12); filename = "user12Info.csv"; DecideCSV(filename); break;
+            case 13: allUserInfo(user13); filename = "user13Info.csv"; DecideCSV(filename); break;
+            case 14: allUserInfo(user14); filename = "user14Info.csv"; DecideCSV(filename); break;
+            case 15: allUserInfo(user15); filename = "user15Info.csv"; DecideCSV(filename); break;
+            case 16: allUserInfo(user16); filename = "user16Info.csv"; DecideCSV(filename); break;
+            case 17: allUserInfo(user17); filename = "user17Info.csv"; DecideCSV(filename); break;
+            case 18: allUserInfo(user18); filename = "user18Info.csv"; DecideCSV(filename); break;
+            case 19: allUserInfo(user19); filename = "user19Info.csv"; DecideCSV(filename); break;
             default:System.out.println("incorrect user ID.. returning to main menu"); break;
                 }
             } catch (NumberFormatException e) {
@@ -456,6 +461,7 @@ public class javaAssignmentProgram {
                     userTally.put(key, userTally.getOrDefault(key, 0) + 1);
 
                     System.out.println(line);
+                    updateCSV(line);
                 }
                 
             }
